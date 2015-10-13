@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<div class='img'>
+    Some test text
+</div>
+<script type="text/javascript">
+function carousel() {
+    $.get('http://127.0.0.1:8001', function(data) {
+        $('div.img').append(data);
+    });
+};
+
+var intervalID = window.setInterval(carousel, 5000);
+window.setInterval(carousel, 5000);
+</script>
+</body>
+</html>
