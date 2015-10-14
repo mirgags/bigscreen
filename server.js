@@ -29,7 +29,7 @@ http.createServer(function (req, res) {
         res.writeHead(200,{'Content-Type': 'text/html'});
         imgList = fs.readdirSync('./images');
         console.log('imgList length: ' + imgList.length);
-        for(i=1;i<imgList.length;i++) {
+        for(i=0;i<imgList.length;i++) {
             imgServe = fs.readFileSync('./images/' + imgList[i]);
             theHtml += '<div><img class="img" id="img'+i+'" src="images?image='+imgList[i]+'" ';
             if(i !== 0) {
@@ -37,7 +37,7 @@ http.createServer(function (req, res) {
             };
             theHtml += '/></div>'
         };
-        theHtml += '<script type="text/javascript">window.setTimeout(function(){location = \'http://localhost:8002/blah\'},' + ((imgList.length - 1) * 10000) + ')</script>';
+        theHtml += '<script type="text/javascript">window.setTimeout(function(){location = \'http://localhost:8002/blah\'},' + ((imgList.length) * 10000) + ')</script>';
         theHtml += '<script src="/">';
         theHtml += 'function carousel() {$.get(\'http://127.0.0.1:8002/blah\', function(data) {$(\'div.img\').append(data);});};window.setInterval(carousel, 5000);';
         theHtml += '</script></body></html>';
